@@ -1,0 +1,5 @@
+package com.all.shoppingcartbackend.daoimpl;
+
+public class CategoryDAOimpl {
+
+}

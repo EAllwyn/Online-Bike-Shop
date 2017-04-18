@@ -1,0 +1,5 @@
+package com.all.shoppingcartbackend.dao;
+
+public interface CategoryDAO {
+
+}

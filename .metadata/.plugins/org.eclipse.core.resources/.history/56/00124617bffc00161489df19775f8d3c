@@ -1,0 +1,16 @@
+package com.all.shoppingcartbackend.daoimpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.all.shoppingcartbackend.dao.CategoryDAO;
+import com.all.shoppingcartbackend.dto.Category;
+
+public class CategoryDAOimpl implements CategoryDAO {
+
+		private static List<Category> categories=new ArrayList<>();
+		static{
+            Category category=new Category();
+            category.setId(1);
+	}
+}
