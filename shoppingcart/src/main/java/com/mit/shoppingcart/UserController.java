@@ -105,19 +105,6 @@ public class UserController {
 		return mv;
 	}
 	
-	/*
-	@RequestMapping("/clickMyCart")
-	public ModelAndView starttoCart(Map<String, Object> map)
-	{
-		log.debug("Start to Cart");
-		String path="C:\\Users\\DHANUSHA\\workspace1\\shoppingcart\\src\\main\\webapp\\Resources\\images";
-		List<Product> prodList=productDAO.getAllProduct();
-		map.put("prList", prodList );
-		map.put("path", path);
-		ModelAndView mv=new ModelAndView("/AddCart",map);
-		log.debug("End to Cart");
-		return mv;
-	}*/
 	
 	
 	

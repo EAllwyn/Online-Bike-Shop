@@ -1086,3 +1086,28 @@ Apr 18, 2017 15:15:11.33 [0418/151511.332:ERROR:crash_report_database_win.cc(563
 Apr 18, 2017 15:15:38.64 [0418/151538.640:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
 Apr 18, 2017 15:15:38.64 [0418/151538.644:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
 Apr 18, 2017 15:15:38.64 [0418/151538.644:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+
+Apr 18, 2017 21:20:09.10 NEW SESSION
+Apr 18, 2017 21:20:09.10 [0418/212009.088:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 18, 2017 21:20:09.14 [0418/212009.093:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+Apr 18, 2017 21:20:09.15 [0418/212009.095:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 18, 2017 21:20:09.71 [10828:12144:0418/212009.715:ERROR:policy_loader_win.cc(449)] PReg file doesn't exist: C:\WINDOWS\System32\GroupPolicy\Machine\Registry.pol
+Apr 18, 2017 21:20:09.71 [10828:12144:0418/212009.716:ERROR:policy_loader_win.cc(449)] PReg file doesn't exist: C:\WINDOWS\System32\GroupPolicy\User\Registry.pol
+Apr 18, 2017 21:20:09.80 [10828:12144:0418/212009.808:ERROR:content_settings_pref.cc(469)] Invalid pattern strings: file:///C://Users//DHANUSHA//workspace1//shoppingcart//src//main//webapp//Resources//images/,*
+Apr 18, 2017 21:20:09.81 [10828:12144:0418/212009.811:ERROR:content_settings_pref.cc(469)] Invalid pattern strings: file:///C://Users//DHANUSHA//workspace1//shoppingcart//src//main//webapp//Resources//images//,*
+Apr 18, 2017 21:20:09.81 [10828:12144:0418/212009.811:ERROR:content_settings_pref.cc(295)] Invalid pattern strings: file:///C://Users//DHANUSHA//workspace1//shoppingcart//src//main//webapp//Resources//images/,*
+Apr 18, 2017 21:20:09.81 [10828:12144:0418/212009.811:ERROR:content_settings_pref.cc(295)] Invalid pattern strings: file:///C://Users//DHANUSHA//workspace1//shoppingcart//src//main//webapp//Resources//images//,*
+Apr 18, 2017 21:20:09.96 [0418/212009.962:ERROR:registration_protocol_win.cc(55)] CreateFile: The system cannot find the file specified. (0x2)
+Apr 18, 2017 21:20:10.19 [10828:3472:0418/212010.194:ERROR:policy_loader_win.cc(449)] PReg file doesn't exist: C:\WINDOWS\System32\GroupPolicy\Machine\Registry.pol
+Apr 18, 2017 21:20:10.19 [10828:3472:0418/212010.195:ERROR:policy_loader_win.cc(449)] PReg file doesn't exist: C:\WINDOWS\System32\GroupPolicy\User\Registry.pol
+Apr 18, 2017 21:20:10.21 [0418/212010.214:ERROR:registration_protocol_win.cc(55)] CreateFile: The system cannot find the file specified. (0x2)
+Apr 18, 2017 21:20:11.04 [0418/212011.047:ERROR:registration_protocol_win.cc(55)] CreateFile: The system cannot find the file specified. (0x2)
+Apr 18, 2017 21:20:11.10 [12216:10120:0418/212011.106:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+
+Apr 19, 2017 12:52:43.61 NEW SESSION
+Apr 19, 2017 12:52:43.61 [0419/125243.555:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 19, 2017 12:52:43.63 [0419/125243.558:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+Apr 19, 2017 12:52:43.63 [0419/125243.559:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 19, 2017 12:53:32.22 [0419/125332.221:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 19, 2017 12:53:32.22 [0419/125332.227:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+Apr 19, 2017 12:53:32.22 [0419/125332.228:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)

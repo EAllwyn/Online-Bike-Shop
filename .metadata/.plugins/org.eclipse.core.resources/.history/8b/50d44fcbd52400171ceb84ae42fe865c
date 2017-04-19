@@ -48,7 +48,7 @@ public class CartController {
 		String path="C:\\Users\\DHANUSHA\\workspace1\\shoppingcart\\src\\main\\webapp\\Resources\\images";
 		List<Product> prodList=productDAO.getAllProduct();
 		ModelAndView mv=new ModelAndView("/Products");
-		String user_Id=(String) session.getAttribute("UserID");// use session attribute to check if cartid
+		String user_Id=(String) session.getAttribute("User_Id");// use session attribute to check if cartid
 		Product product=productDAO.getProductById(addprodId);
 		Cart cart=new Cart();
 		System.out.println(user_Id);
@@ -63,12 +63,16 @@ public class CartController {
 	}
 	
 	@RequestMapping("/clickMyCart")
-	public ModelAndView showMyCart()
+	public ModelAndView showMyCart(/* request get cartid*/)
 	{
 		String userid=(String) session.getAttribute("User_Id");
 		List<Cart> userCartList=cartDAO.getCartsOfUser(userid);
-		ModelAndView mv=new ModelAndView("/Products");
-		mv.addObject("prList", userCartList);		
+		ModelAndView mv=new ModelAndView("/MyCart");
+		System.out.println(userCartList.size());
+		mv.addObject("prList", userCartList);
+		//cartDAO.removeProductFromCart("P1", 1);
+		//Cart cart=cartDAO.getCartById(1);
+		//cartDAO.deleteCart(cart);
 		return mv;
 	}
 	
@@ -125,19 +129,31 @@ public class CartController {
 		log.debug("Start of method goToCart");
 		return mv;
 	}
-	
-	@RequestMapping("/removeProdFromCart")// just remove cartid of particular product
+	*/
+	@RequestMapping("/removeProductFromCart")// just remove cartid of particular product
 	public ModelAndView goRemoveProduct(@RequestParam("prID") String prodId)
 	{
 		Product product=productDAO.getProductById(prodId);
-		Cart cart=cartDAO.getCartById((Integer)session.getAttribute("CurrentCartID"));
+		Cart cart=new Cart();
+		List<Cart> cart_List=cartDAO.getCartsOfUser((String) session.getAttribute("User_Id"));
+		for(Cart c: cart_List)
+		{
+			if(c.getProID().equals(prodId))
+			{
+				cart=c;
+			}
+		}
 		cartDAO.removeProductFromCart(prodId, cart.getCartID());
-		cart.setTotalCost(cart.getTotalCost()-product.getProductCost());
-		cartDAO.updateCart(cart);
-		ModelAndView mv=new ModelAndView("/User/UserCart");
+		//cart.setTotalCost(cart.getTotalCost()-product.getProductCost());
+		//cartDAO.updateCart(cart);
+		product.setProductQty(product.getProductQty()+1);
+		productDAO.updateProduct(product);
+		ModelAndView mv=new ModelAndView("/MyCart");
+		List<Cart> userCartList=cartDAO.getCartsOfUser((String) session.getAttribute("User_Id"));
+		mv.addObject("prList", userCartList);
 		return mv;
 	}
-	
+	/*
 	@RequestMapping("goGenerateBill")
 	public ModelAndView goGenerateBill()
 	{

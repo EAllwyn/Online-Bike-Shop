@@ -110,12 +110,4 @@ public class Product {
 		this.productImage = productImage;
 	}
 	
-	/*
-	public File getProductImage() {
-		return productImage;
-	}
-	public void setProductImage(File productImage) {
-		this.productImage = productImage;
-	}	
-	*/
 }

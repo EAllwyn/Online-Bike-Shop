@@ -47,13 +47,7 @@ public class Cart {
 	
 	private int prodCost;
 	
-	//privave String prodId;
-	//private int productQty; to implement this while adding to cart set product.setQuanity-1 and increase cart.setproductqty+1
-	//private int prodCost;
-	
-	/*@ElementCollection do not use this
-	@JoinTable(name="Products_In_Cart")
-	private Set<Product> productsinCart= new HashSet<Product>();*/
+
 	@Embedded
 	@AttributeOverrides({
 		@AttributeOverride(name="streetName",column=@Column(name="bill_street")),
@@ -159,15 +153,7 @@ public class Cart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	/*
-	public Set<Product> getProductsinCart() {
-		return productsinCart;
-	}
-
-	public void setProductsinCart(Set<Product> productsinCart) {
-		this.productsinCart = productsinCart;
-	}
-	*/
+	
 	public Address getBillingAddress() {
 		return billingAddress;
 	}

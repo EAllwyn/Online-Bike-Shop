@@ -25,10 +25,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public List<Product> getAllProduct() {
-		//select * from category -sql query
-		// use hql(hibernate query language)
-		// from Category -mention Domain Class name not table name
-		//convert the hibernate query into db specific language
+		
 		return sessionFactory.getCurrentSession().createQuery("from Product").list();
 	}
 
@@ -36,8 +33,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean saveProduct(Product product) {
 		try
 		{
-			//getcurrentSession opens the existing session
-			//opencurrentSession creates a new session if not present
+			
 		sessionFactory.getCurrentSession().save(product);
 		return true;
 		}
@@ -92,8 +88,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public Product getProductById(String id) {
-		// select * from Category where id='id'
-		// return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
+		
 		return (Product) sessionFactory.getCurrentSession().createQuery("from Product where id ='"+ id +"'" ).uniqueResult();// uniqueresult() or list().get(0);
 	}
 
