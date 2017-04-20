@@ -1111,3 +1111,8 @@ Apr 19, 2017 12:52:43.63 [0419/125243.559:ERROR:crash_report_database_win.cc(563
 Apr 19, 2017 12:53:32.22 [0419/125332.221:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
 Apr 19, 2017 12:53:32.22 [0419/125332.227:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
 Apr 19, 2017 12:53:32.22 [0419/125332.228:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+
+Apr 19, 2017 16:39:27.72 NEW SESSION
+Apr 19, 2017 16:39:27.72 [0419/163927.722:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)
+Apr 19, 2017 16:39:27.75 [0419/163927.755:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+Apr 19, 2017 16:39:27.75 [0419/163927.757:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: Access is denied. (0x5)

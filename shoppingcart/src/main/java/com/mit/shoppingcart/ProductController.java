@@ -29,11 +29,11 @@ public class ProductController {
 	private ProductDAO productDAO;
 	
 	@RequestMapping("/selAddProduct")
-	public ModelAndView showPAdd()
+	public ModelAndView showProductAdd()
 	{
-		log.debug("Start go to addproduct");
+		log.debug("Start method showProductAdd");
 		ModelAndView mv=new ModelAndView("/AddProduct","command", new Product());
-		log.debug("End to");
+		log.debug("End of showProductAdd");
 		return mv;
 	}
 	
@@ -41,7 +41,7 @@ public class ProductController {
 	@RequestMapping(value="/addProduct",  method = RequestMethod.POST)
 	public ModelAndView addProductFunction(@ModelAttribute Product product)
 	{
-		log.debug("Start of Product add");
+		log.debug("Start of addProductFunction");
 		productDAO.saveProduct(product);
 		String path="C:\\Users\\DHANUSHA\\workspace1\\shoppingcart\\src\\main\\webapp\\Resources\\images";
 		path=path+String.valueOf(product.getProductID())+".jpg";
@@ -52,103 +52,105 @@ public class ProductController {
 			try
 			{
 			  byte[] bytes=filedet.getBytes();
-			  System.out.println(bytes.length);
 			  FileOutputStream fos=new FileOutputStream(f);
               BufferedOutputStream bs=new BufferedOutputStream(fos);
               		bs.write(bytes);
               		bs.close();
-             		System.out.println("File Uploaded Successfully");
+              		log.debug("File Uploaded Successfully");
 			}
 			catch(Exception e)
 			{
-				System.out.println("Exception Arised"+e);
+				log.debug("Exception Arised"+e);
 			}
 		}
 		else
 		{
-			System.out.println("File is Empty not Uploaded");
-			
+			log.debug("File is Empty not Uploaded");			
 		}
-
-
 		ModelAndView mv= new ModelAndView("/Admin");
 		mv.addObject("msg", "Product ADDED");
-		log.debug("End of Product add");
+		log.debug("End of addProductFunction");
 		return mv;
 	}
 	
 	@RequestMapping("/selEditProduct")
 	public ModelAndView showEditProduct(Map<String, Object> map)
 	{
-		log.debug("Start go to editproduct");
+		log.debug("Start of showEditProduct");
 		List<Product> prodList=productDAO.getAllProduct();
 		map.put("prList", prodList );
 		ModelAndView mv=new ModelAndView("/EditProduct",map);
-		log.debug("End to editproduct");
+		log.debug("End of showEditProduct");
 		return mv;
 	}
 	
 	@RequestMapping("/findProduct")
 	public ModelAndView findProduct(@RequestParam("pID") String prID, Map<String, Object> map)
 	{
-		log.debug("Start to addproduct");
+		log.debug("Start of findProduct");
 		Product pr=productDAO.getProductById(prID);
 		ModelAndView mv=new ModelAndView("/EditProduct2","command", new Product() );
 		mv.addObject("prFound", pr);
-		log.debug("End of addproduct");
+		log.debug("End of findProduct");
 		return mv;
 	}
 	
 	@RequestMapping(value="/EditProduct",  method = RequestMethod.POST)
 	public ModelAndView editProductFunction(@ModelAttribute Product product,@RequestParam("prID") String pID)
 	{
+		log.debug("Start of editProductFunction");
 		product.setProductID(pID);
 		productDAO.updateProduct(product);
 		ModelAndView mv= new ModelAndView("/Admin");
 		mv.addObject("msg", "Product Edited");
+		log.debug("End of editProductFunction");
 		return mv;
 	}
 	
 	@RequestMapping("/selDeleteProduct")
 	public ModelAndView deleteProductFunction()
 	{
+		log.debug("Start of deleteProductFunction");
 		ModelAndView mv=new ModelAndView("/DeleteProduct");
+		log.debug("End of deleteProductFunction");
 		return mv;
 	}
 	
 	@RequestMapping("/deleteProduct")
 	public ModelAndView deleteProduct(@RequestParam("pID") String prID)
 	{
+		log.debug("Start of deleteProduct");
 		productDAO.deleteProduct(prID);
 		ModelAndView mv=new ModelAndView("/Admin");
+		log.debug("End of deleteProduct");
 		return mv;
 	}
 	
 	@RequestMapping("/selViewProduct")
 	public ModelAndView viewProduct(Map<String, Object> map)
 	{
+		log.debug("Start of viewProduct");
 		String path="Resources/images/";
 		List<Product> prodList=productDAO.getAllProduct();
 		map.put("prList", prodList );
 		map.put("path", path);
 		ModelAndView mv=new ModelAndView("/ViewProduct",map);
+		log.debug("End of viewProduct");
 		return mv;
 	}
 	
 	@RequestMapping("/clickProducts")
 	public ModelAndView showProducts()
 	{
-		System.out.println("Inside Product view");
+		log.debug("Start of viewProduct");
 		List<Product> prList=productDAO.getAllProduct();
 		String path="Resources/images/";
 		ModelAndView mv=new ModelAndView("/Products");
 		mv.addObject("prList", prList);
 		mv.addObject("path",path);
-		System.out.println("Leaving Product view");
+		log.debug("End of viewProduct");
 		return mv;
 	}
-
-
-
+	
 }
   

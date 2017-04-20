@@ -1,0 +1,106 @@
+package com.mit.shoppingcart;
+
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.mit.dao.SupplierDAO;
+import com.mit.model.Supplier;
+
+@Controller
+public class SupplierController {
+	
+	private static final Logger log = LoggerFactory.getLogger(SupplierController.class);
+	
+	@Autowired
+	private SupplierDAO supplierDAO;
+	
+	@RequestMapping("/selAddSupplier")
+	public ModelAndView showAddSupplier()
+	{
+		log.debug("Start of the showAddSupplier");
+		ModelAndView mv=new ModelAndView("/AddSupplier","command", new Supplier());
+		log.debug("End of the showAddSupplier");
+		return mv;
+	}
+	
+	@RequestMapping(value="/addSupplier",  method = RequestMethod.POST)
+	public ModelAndView addCategoryFunction(@ModelAttribute Supplier supplier)
+	{
+		log.debug("Start of the addCategoryFunction");
+		supplierDAO.saveSupplier(supplier);
+		ModelAndView mv= new ModelAndView("/Admin");
+		mv.addObject("msg", "Supplier ADDED");
+		log.debug("End of the addCategoryFunction");
+		return mv;
+	}
+	
+	@RequestMapping("/selEditSupplier")
+	public ModelAndView showEditSupplier(Map<String, Object> map)
+	{
+		log.debug("Start of the showEditSupplier");
+		List<Supplier> suppList=supplierDAO.getAllSupplier();
+		map.put("spList", suppList );
+		ModelAndView mv=new ModelAndView("/EditSupplier",map);
+		log.debug("End of the showEditSupplier");
+		return mv;
+	}
+	
+	@RequestMapping("/findSupplier")
+	public ModelAndView findSupplier(@RequestParam("sID") String spID, Map<String, Object> map)
+	{
+		log.debug("Start of the findSupplier");
+		System.out.println("Inside Supplier find");
+		Supplier supplier=supplierDAO.getSupplierById(spID);
+		ModelAndView mv=new ModelAndView("/EditSupplier2","command", new Supplier() );
+		mv.addObject("spFound", supplier);
+		log.debug("End of the findSupplier");
+		return mv;
+	}
+	
+	@RequestMapping(value="/editSupplier",  method = RequestMethod.POST)
+	public ModelAndView editSupplierFunction(@ModelAttribute Supplier supplier,@RequestParam("spID") String sID)
+	{
+		log.debug("Start of the editSupplierFunction");
+		supplier.setSupplierID(sID);
+		supplierDAO.updateSupplier(supplier);
+		ModelAndView mv= new ModelAndView("/Admin");
+		mv.addObject("msg", "Supplier Edited");
+		log.debug("End of the editSupplierFunction");
+		return mv;
+	}
+	
+	@RequestMapping("/selDeleteSupplier")
+	public ModelAndView deleteSupplierFunction()
+	{
+		ModelAndView mv=new ModelAndView("/DeleteSupplier");
+		return mv;
+	}
+	
+	@RequestMapping("/deleteSupplier")
+	public ModelAndView deleteSupplier(@RequestParam("sID") String spID)
+	{
+		supplierDAO.deleteSupplier(spID);
+		ModelAndView mv=new ModelAndView("/Admin");
+		return mv;
+	}
+	
+	@RequestMapping("/selViewSupplier")
+	public ModelAndView viewSupplier(Map<String, Object> map)
+	{
+		List<Supplier> suppList=supplierDAO.getAllSupplier();
+		map.put("spList", suppList );
+		ModelAndView mv=new ModelAndView("/ViewSupplier",map);
+		return mv;
+	}
+
+}

@@ -44,14 +44,14 @@ public class CartController {
 	@RequestMapping("/addProductToCart")
 	public ModelAndView goUserCart(@RequestParam("prdAddId") String addprodId)// change params
 	{
-		log.debug("Start of method goUserCart");
+		log.debug("Start of method addProductToCart");
 		String path="C:\\Users\\DHANUSHA\\workspace1\\shoppingcart\\src\\main\\webapp\\Resources\\images";
 		List<Product> prodList=productDAO.getAllProduct();
 		ModelAndView mv=new ModelAndView("/Products");
 		String user_Id=(String) session.getAttribute("User_Id");// use session attribute to check if cartid
 		Product product=productDAO.getProductById(addprodId);
+		log.debug("Product obtained :"+product.getProductID());
 		Cart cart=new Cart();
-		System.out.println(user_Id);
 		cart.setUserID(user_Id);
 		cart.setProID(product.getProductID());
 		cart.setProductQty(1);
@@ -59,17 +59,20 @@ public class CartController {
 		product.setProductQty(product.getProductQty()-cart.getProductQty());
 		productDAO.updateProduct(product);
 		cartDAO.saveCart(cart);
+		log.debug("End of method addProductToCart");
 		return mv;
 	}
 	
 	@RequestMapping("/clickMyCart")
 	public ModelAndView showMyCart(/* request get cartid*/)
 	{
+		log.debug("Start of method showMyCart");
 		String userid=(String) session.getAttribute("User_Id");
 		List<Cart> userCartList=cartDAO.getCartsOfUser(userid);
+		log.debug("Carts that the user has are obtained");
 		ModelAndView mv=new ModelAndView("/MyCart");
-		System.out.println(userCartList.size());
 		mv.addObject("prList", userCartList);
+		log.debug("End of method showMyCart");
 		return mv;
 	}
 	
@@ -77,6 +80,7 @@ public class CartController {
 	@RequestMapping("/removeProductFromCart")// just remove cartid of particular product
 	public ModelAndView goRemoveProduct(@RequestParam("prID") String prodId)
 	{
+		log.debug("Start of method goRemoveProduct");
 		Product product=productDAO.getProductById(prodId);
 		Cart cart=new Cart();
 		List<Cart> cart_List=cartDAO.getCartsOfUser((String) session.getAttribute("User_Id"));
@@ -90,9 +94,11 @@ public class CartController {
 		cartDAO.removeProductFromCart(prodId, cart.getCartID());
 		product.setProductQty(product.getProductQty()+1);
 		productDAO.updateProduct(product);
+		log.debug("Product obtained");
 		ModelAndView mv=new ModelAndView("/MyCart");
 		List<Cart> userCartList=cartDAO.getCartsOfUser((String) session.getAttribute("User_Id"));
 		mv.addObject("prList", userCartList);
+		log.debug("End of method goRemoveProduct");
 		return mv;
 	}
 	
